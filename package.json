@@ -1,0 +1,22 @@
+{
+  "name": "adventofcode",
+  "version": "0.0.2",
+  "description": "iHaveBecomeDeath attempts to solve adventofcode in short time with non-clever solutions",
+  "main": "day1.1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iHaveBecomeDeath/adventofcode-solutions.git"
+  },
+  "author": "iHaveBecomeDeath",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iHaveBecomeDeath/adventofcode-solutions/issues"
+  },
+  "homepage": "https://github.com/iHaveBecomeDeath/adventofcode-solutions#readme",
+  "dependencies": {
+    "crypto-js": "^3.1.5"
+  }
+}
