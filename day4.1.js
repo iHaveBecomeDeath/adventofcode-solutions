@@ -1,4 +1,4 @@
-var CryptoJS = require("./crypto-js/crypto-js");
+var CryptoJS = require("crypto-js/crypto-js");
 var input = 'bgvyzdsv'; 
 var md5 = function(str){
 	return CryptoJS.MD5(str).toString();
