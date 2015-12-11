@@ -16,7 +16,6 @@ while(!done){
 		done = true;
 		console.log('done!');
 	}
-	// console.log(md5String, done, number, input);	
 	number++;
 }
 	console.log(md5String, done, number-1, input);	

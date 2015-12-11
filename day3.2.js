@@ -60,9 +60,4 @@ for (var i = 0; i < texten.length; i++){
 	}
 	housesWithPresents[houseNo] = 1;
 }
-// var j = 0;
-// for (var house in housesWithPresents){
-// 	console.log('house ', house, ' gets present. Count: ', ++j);
-// }
-//console.log(housesWithPresents);
 console.log(Object.size(housesWithPresents), ' houses total ');

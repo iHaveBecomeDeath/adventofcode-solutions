@@ -8,8 +8,6 @@ Object.size = function(obj) {
     return size;
 };
 
-// Get the size of an object
-
 var housesWithPresents = {}; 
 var x = 0, y = 0;
 housesWithPresents['0:0'] = 1;
@@ -22,11 +20,5 @@ for (var i = 0; i < texten.length; i++){
 	}
 	var houseNo = x + ':' + y;
 	housesWithPresents[houseNo] = 1;
-	//console.log(texten[i], 'pos: ', i, 'x: ', x, 'y: ', y);
 }
-// var j = 0;
-// for (var house in housesWithPresents){
-// 	console.log('house ', house, ' gets present. Count: ', ++j);
-// }
-//console.log(housesWithPresents);
 console.log(Object.size(housesWithPresents), ' houses got at least one present.');
