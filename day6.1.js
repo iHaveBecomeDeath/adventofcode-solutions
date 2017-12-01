@@ -11,27 +11,48 @@ function interpretInstructions(instruction){
 	return actions;
 }
 function initializeLights(){
-	return [].fill.call(
-		{ length:1000 }, [].fill.call({ length:1000 }, 0)
-	);
+	var l = {};
+	for (var i = 0; i < 1000; i++){
+		l[i]=[];
+	}
+	return l;
+	// return [].fill.call(
+	// 	{ length:1000 }, [].fill.call({ length:1000 }, 0)
+	// );
 }
-var lights = initializeLights();var execInstructions = function(instr){
+var lights = initializeLights();
+
+var execInstructions = function(instr){
 	for (var i = instr[1]; i <= instr[4]; i++){
 		for (var j = instr[2]; j <= instr[5]; j++){
 			var newVal = 0;
-//			console.log(instr[0]);
-			switch (instr[0].trim()){
+            switch (instr[0].trim()){
 				case 'turn on':
 					newVal = 1;
 					break;
 				case 'toggle':
-					if (lights[i][j] === 0){
+                    if (lights[i].indexOf(j) > -1){
+					// if (lights[i][j] === 0){
+						// console.log('toggle on', i, j);
+						newVal = 0;
+					} else {
+						// console.log('toggle off', i, j);
 						newVal = 1;
 					}
 					break;
 					// turn off and toggle off handled by default
 			}
-			lights[i][j] = newVal; 
+			if (newVal === 1){
+				lights[i].push(j);
+			} else {
+                
+				if (lights[i].indexOf(j) > -1){
+//					 console.log('turn it off', i, j);
+					lights[i] = lights[i].splice(lights[i].indexOf(j), 1);
+				}// else{console.log('failed turnoff', i, j);}
+			}
+			
+//			lights[i][j] = newVal; 
 //			console.log(i,j, 'should be', newVal);			
 //			console.log('lights',i,j,'new val', lights[i][j]);
 		}
@@ -41,23 +62,31 @@ var lights = initializeLights();var execInstructions = function(instr){
 var countLights = function(){
 	var count = 0;
 	for (var i = 0; i < 1000; i++){
-		for(var j = 0; j < 1000; j++){
-			if(lights[i][j] === 1){
-				count++;
-			}
-		}
+        count += lights[i].length;
+		// for(var j = 0; j < 1000; j++){
+			// if(lights[i][j] === 1){
+				// count++;
+			// }
+		// }
 	}
 	return count;
 }
-
-// allInstructions.split('_').forEach(function(element) {
-// 	console.log(element);
-// 	var currentInstruction = interpretInstructions(element);
-// 	execInstructions(currentInstruction);
-// 	console.log('results in count', countLights());
-// });
-var ins1 = interpretInstructions('turn on 0,0 through 1,33');
-execInstructions(ins1);
-console.log(ins1, 'results in', countLights(), 'lights');
-console.log(execInstructions(interpretInstructions('toggle 0,0 through 1,31')));
-console.log(interpretInstructions('turn off 499,499 through 500,500'));
+// 
+allInstructions.split('_').forEach(function(element) {
+	// console.log(element);
+	var currentInstruction = interpretInstructions(element);
+	execInstructions(currentInstruction);
+	console.log('results in count', countLights());
+});
+// var ins1 = interpretInstructions('turn on 0,0 through 1,33');
+// execInstructions(ins1);
+// console.log(ins1, 'results in', countLights(), 'lights');
+// var ins2 = interpretInstructions('toggle 0,0 through 1,31')
+// execInstructions(ins2);
+// console.log(ins2, 'results in', countLights(), 'lights');
+// var ins3 = interpretInstructions('turn on 498,1 through 501,501');
+// execInstructions(ins3);
+// console.log(ins3, 'results in', countLights(), 'lights');
+// var ins4 = interpretInstructions('turn off 499,3 through 500,500');
+// execInstructions(ins4);
+// console.log(ins4, 'results in', countLights(), 'lights');
