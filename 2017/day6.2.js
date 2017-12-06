@@ -6,12 +6,10 @@ var iterations = 0;
 while(true) {
   var seenName = input.join(",");
   if (seenInputs[seenName] !== undefined) {
-    console.log(`found ${seenName} again, at ${iterations}. Originally at ${seenInputs[seenName]}`);
     console.log(`Distance: ~~~${iterations - seenInputs[seenName]} ~~~`);
     break;
   } else {
     seenInputs[seenName] = iterations;
-    console.log(`found ${seenName} at ${iterations}`);
   }
 
   var highestValue = Math.max(...input);
